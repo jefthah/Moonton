@@ -2,16 +2,22 @@ export default function PrimaryButton({
     className = '',
     disabled,
     children,
+    variant = 'alerange',
     ...props
 }) {
+    const baseClasses = 'inline-flex items-center justify-center rounded-2xl py-[13px] px-4 text-base font-semibold transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-0 w-full';
+    
+    const variantClasses = {
+        alerange: 'bg-alerange text-white hover:bg-orange-600 focus:ring-alerange',
+        white: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-black focus:ring-white group'
+    };
+    
+    const disabledClasses = disabled ? 'opacity-25 cursor-not-allowed' : '';
+    
     return (
         <button
             {...props}
-            className={
-                `inline-flex items-center rounded-md border border-transparent bg-gray-800 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-white transition duration-150 ease-in-out hover:bg-gray-700 focus:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 active:bg-gray-900 ${
-                    disabled && 'opacity-25'
-                } ` + className
-            }
+            className={`${baseClasses} ${variantClasses[variant]} ${disabledClasses} ${className}`}
             disabled={disabled}
         >
             {children}
