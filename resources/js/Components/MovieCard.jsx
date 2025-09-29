@@ -28,7 +28,7 @@ export default function MovieCard({slug, name, category, thumbnail}) {
             <div className="absolute top-1/2 left-1/2 -translate-y-[500px] group-hover:-translate-y-1/2 -translate-x-1/2 z-20 transition ease-in-out duration-500">
                 <img src="/icons/ic_play.svg" width="50" alt="" />
             </div>
-            <Link href={route('prototype.movie.show', slug)} className="inset-0 absolute z-50"></Link>
+            <Link href={route('user.dashboard.movie.show', slug)} className="inset-0 absolute z-50"></Link>
         </div>
     );
 }
