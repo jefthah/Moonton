@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../moonton-template"
+		}
+	],
+	"settings": {
+		"editor.wordWrap": "on"
+	}
+}

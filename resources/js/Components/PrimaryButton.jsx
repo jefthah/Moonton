@@ -9,7 +9,8 @@ export default function PrimaryButton({
     
     const variantClasses = {
         alerange: 'bg-alerange text-white hover:bg-orange-600 focus:ring-alerange',
-        white: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-black focus:ring-white group'
+        white: 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-black focus:ring-white group',
+        light: 'bg-white border border-gray-200 text-black hover:bg-gray-100 focus:ring-gray-200'
     };
     
     const disabledClasses = disabled ? 'opacity-25 cursor-not-allowed' : '';
