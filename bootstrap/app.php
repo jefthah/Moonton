@@ -16,11 +16,15 @@ return Application::configure(basePath: dirname(__DIR__))
             \Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets::class,
         ]);
 
-        // Register Spatie Permission middleware aliases
+        // Register middleware aliases
         $middleware->alias([
+            // Spatie Permission
             'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
             'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
             'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
+
+            // App middlewares
+            'checkUserSubscription' => \App\Http\Middleware\CheckUserSubscription::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
