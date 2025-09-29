@@ -50,16 +50,12 @@ export default function Sidebar({ auth }) {
                         </div>
                         {/* ./Others */}
 
-                        {/* Subscription details */}
-                        {(() => {
+                        {/* Subscription details (hide on admin pages) */}
+                        {!route().current('admin.*') && (() => {
                             const plan = auth?.activePlan || null;
                             const name = plan?.name || "Basic";
                             const activeDays = plan?.activeDays ?? 30;
-                            const remainingActiveDays =
-                                plan?.remainingActiveDays ?? 0;
-
-                            // Debug log
-                            console.log("Active Plan Data:", plan);
+                            const remainingActiveDays = plan?.remainingActiveDays ?? 0;
 
                             return (
                                 <SubscriptionDetail
