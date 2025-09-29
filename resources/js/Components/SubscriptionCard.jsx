@@ -71,9 +71,9 @@ export default function SubscriptionCard({
             {/* Bottom: CTA Button */}
             <div>
                 <PrimaryButton
-                    className={`rounded-2xl py-[13px] text-center grid ${isPremium ? 'bg-alerange' : 'border border-[#F1F1F1]'}`}
+                    className={`rounded-2xl py-[13px] text-center grid`}
                     type="button"
-                    variant={isPremium ? 'alerange' : 'white'}
+                    variant={isPremium ? 'alerange' : 'light'}
                     onClick={() =>
                         onSelectSubscription?.({
                             id,

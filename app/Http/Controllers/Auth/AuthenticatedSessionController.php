@@ -31,9 +31,9 @@ class AuthenticatedSessionController extends Controller
     {
         $request->authenticate();
 
-        $request->session()->regenerate();
+        app('session')->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->intended(route('user.dashboard.index', absolute: false));
     }
 
     /**
@@ -43,9 +43,9 @@ class AuthenticatedSessionController extends Controller
     {
         Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+        app('session')->invalidate();
 
-        $request->session()->regenerateToken();
+        app('session')->regenerateToken();
 
         return redirect('/');
     }
