@@ -14,6 +14,10 @@ export default function MovieCard({slug, name, category, thumbnail}) {
                 src={`/storage/${thumbnail}`}
                 className="object-cover rounded-[30px] h-[340px] w-[250px]"
                 alt=""
+                onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/images/featured-1.png";
+                }}
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black rounded-bl-[28px] rounded-br-[28px]">
                 <div className="px-7 pb-7">
