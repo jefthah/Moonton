@@ -1,3 +1,17 @@
+# Normalisasi line endings ke LF agar tidak terjadi konflik CRLF/LF antar OS
+* text=auto eol=lf
+
+# Jika butuh CRLF khusus untuk script Windows, uncomment baris di bawah
+# *.bat text eol=crlf
+# *.cmd text eol=crlf
+
+# Pastikan gambar/binary tidak diubah line ending-nya
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.svg text eol=lf
 * text=auto eol=lf
 
 *.blade.php diff=html
