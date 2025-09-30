@@ -9,8 +9,8 @@ export default function Topbar() {
   const { auth } = usePage().props;
   const userName = auth?.user?.name ?? "User";
 
-  const { post } = useForm({});
-  const handleLogout = () => post(route("logout"));
+  const { get } = useForm({});
+  const handleLogout = () => get(route("logout"));
 
   const triggerDropdown = () => {
     setDropdown(prev => {

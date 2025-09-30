@@ -9,7 +9,7 @@ export default function Dashboard({ auth, featuredMovies, movies }) {
         cellAlign: "left",
         contain: true,
         groupCells: 1,
-        wrapAround: false,
+    wrapAround: false,
         pageDots: false,
         prevNextButtons: false,
         draggable: ">1",
