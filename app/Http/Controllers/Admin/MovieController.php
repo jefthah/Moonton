@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Movie\Store;
+use App\Http\Requests\Admin\Movie\Update;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -63,15 +64,35 @@ class MovieController extends Controller
      */
     public function edit(Movie $movie)
     {
-        //
+        return inertia('Admin/Movie/Edit', [
+            'movie' => $movie,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Movie $movie)
+    public function update(Update $request, Movie $movie)
     {
-        //
+        /** @var Request $request */
+        $data = $request->validated();
+
+        if ($request->hasFile('thumbnail')) {
+            /** @var UploadedFile $thumbnail */
+            $thumbnail = $request->file('thumbnail');
+
+            if (!empty($movie->thumbnail) && Storage::disk('public')->exists($movie->thumbnail)) {
+                Storage::disk('public')->delete($movie->thumbnail);
+            }
+
+            $data['thumbnail'] = $thumbnail->store('movies', 'public');
+        }
+
+        $data['slug'] = Str::slug($data['name']);
+
+        $movie->update($data);
+
+        return redirect()->route('admin.dashboard.movie.index')->with(['success' => 'Movie updated successfully']);
     }
 
     /**
